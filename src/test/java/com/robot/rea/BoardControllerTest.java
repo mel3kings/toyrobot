@@ -17,7 +17,7 @@ public class BoardControllerTest {
 
         commands.add("PLACE");
         Robot r = br.executeCommands(commands);
-        assertEquals(r.getLocation(), "0,0,NORTH");
+        assertEquals( "0,0,NORTH",r.getLocation());
     }
 
     @Test
@@ -28,7 +28,7 @@ public class BoardControllerTest {
         commands.add("PLACE");
         commands.add("MOVE");
         Robot r = br.executeCommands(commands);
-        assertEquals(r.getLocation(), "0,1,NORTH");
+        assertEquals( "0,1,NORTH",r.getLocation());
     }
 
     @Test
@@ -45,7 +45,45 @@ public class BoardControllerTest {
         commands.add("MOVE");
         commands.add("MOVE");
         Robot r = br.executeCommands(commands);
-        assertEquals(r.getLocation(), "0,2,NORTH");
+        assertEquals("0,2,NORTH",r.getLocation());
 
     }
+
+    @Test
+    public void testRightMovement() {
+        BoardController br = new BoardController(2, 2);
+        ArrayList<String> commands = new ArrayList<>();
+
+        commands.add("PLACE");
+        commands.add("MOVE");
+        commands.add("RIGHT");
+        commands.add("MOVE");
+        Robot r = br.executeCommands(commands);
+        assertEquals( "1,1,EAST",r.getLocation());
+    }
+
+    @Test
+    public void testLeftMovement() {
+        BoardController br = new BoardController(2, 2);
+        ArrayList<String> commands = new ArrayList<>();
+
+        commands.add("PLACE");
+        commands.add("MOVE");
+        commands.add("LEFT");
+        commands.add("MOVE");
+        Robot r = br.executeCommands(commands);
+        assertEquals("0,1,WEST",r.getLocation());
+    }
+
+    @Test
+    public void testNoMovement(){
+        BoardController br = new BoardController(2, 2);
+        ArrayList<String> commands = new ArrayList<>();
+
+        commands.add("PLACE");
+        commands.add("LEFT");
+        Robot r = br.executeCommands(commands);
+        assertEquals("0,0,WEST",r.getLocation());
+    }
+
 }

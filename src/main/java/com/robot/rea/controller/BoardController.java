@@ -1,8 +1,6 @@
 package com.robot.rea.controller;
 
-import com.robot.rea.command.Command;
-import com.robot.rea.command.MoveCommand;
-import com.robot.rea.command.PlaceCommand;
+import com.robot.rea.command.*;
 import com.robot.rea.data.Robot;
 
 import java.util.List;
@@ -20,19 +18,22 @@ public class BoardController {
 
     public Robot executeCommands(List<String> commands) {
         Robot dummy = new Robot();
-        Command current = null;
+        Command command = null;
 
-        for (String command : commands) {
-            if (command.equals(Robot.Command.PLACE.toString())) {
-                current = new PlaceCommand();
-            } else if (command.equals(Robot.Command.MOVE.toString())) {
-                current = new MoveCommand(this.MAX_X_AXIS, this.MAX_Y_AXIS);
+        for (String strCommand : commands) {
+            if (strCommand.equals(Robot.Command.PLACE.toString())) {
+                command = new PlaceCommand();
+            } else if (strCommand.equals(Robot.Command.MOVE.toString())) {
+                command = new MoveCommand(this.MAX_X_AXIS, this.MAX_Y_AXIS);
+            } else if (strCommand.equals(Robot.Command.LEFT.toString())) {
+                command = new LeftCommand();
+            } else if (strCommand.equals(Robot.Command.RIGHT.toString())) {
+                command = new RightCommand();
             }
-
-            if(null != current)
-            current.execute(dummy);
+            if (null != command){
+                command.execute(dummy);
+            }
         }
-
         return dummy;
     }
 

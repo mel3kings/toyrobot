@@ -30,7 +30,6 @@ public class Robot {
 
     }
 
-
     public void reportLocation() {
         System.out.println(this.getxAxis() + "," + this.getyAxis() + "," + String.valueOf(direction));
     }
@@ -40,30 +39,28 @@ public class Robot {
     }
 
     public void turnLeft() {
-        direction = direction.turnLeft();
+        if (isInitialised) {
+            direction = direction.turnLeft();
+        }
     }
 
     public void turnRight() {
-        direction = direction.turnRight();
+        if (isInitialised) {
+            direction = direction.turnRight();
+        }
     }
 
     public void move() {
+        System.out.print("moving from " + direction + " current axis is :" + xAxis + "," + yAxis);
         switch (direction) {
-            case NORTH:
-                yAxis += 1;
-                break;
-            case SOUTH:
-                yAxis += 1;
-                break;
-            case EAST:
-                xAxis -= 1;
-                break;
-            case WEST:
-                xAxis -= 1;
-                break;
+            case NORTH: yAxis += 1; break;
+            case SOUTH: if(yAxis > 0) yAxis -= 1;  break;
+            case EAST: xAxis += 1; break;
+            case WEST: if(xAxis > 0) xAxis -= 1; break;
             default:
                 throw new IllegalArgumentException("Invalid move command");
         }
+        System.out.println("after moving " + direction + " current axis is :" + xAxis + "," + yAxis);
     }
 
     public Direction getDirection() {

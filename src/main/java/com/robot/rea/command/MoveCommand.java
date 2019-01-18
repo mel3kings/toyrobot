@@ -15,7 +15,7 @@ public class MoveCommand implements Command {
 
     @Override
     public void execute(Robot robot) {
-        if (robot.getxAxis() < MAX_X_AXIS && robot.getxAxis() >= 0
+        if (robot.isInitialised() && robot.getxAxis() < MAX_X_AXIS && robot.getxAxis() >= 0
                 && robot.getyAxis() < MAX_Y_AXIS && robot.getyAxis() >= 0) {
             robot.move();
         }
