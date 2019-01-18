@@ -16,15 +16,10 @@ public class Robot {
     }
 
 
-    public enum Command {
+    public enum Instruction {
         PLACE, MOVE, LEFT, RIGHT, REPORT
     }
 
-    public Robot(int x, int y, Direction direction) {
-        this.xAxis = x;
-        this.yAxis = y;
-        this.direction = direction;
-    }
 
     public Robot() {
 
@@ -51,12 +46,20 @@ public class Robot {
     }
 
     public void move() {
-        System.out.print("moving from " + direction + " current axis is :" + xAxis + "," + yAxis);
+        System.out.println("moving from " + direction + " current axis is :" + xAxis + "," + yAxis);
         switch (direction) {
-            case NORTH: yAxis += 1; break;
-            case SOUTH: if(yAxis > 0) yAxis -= 1;  break;
-            case EAST: xAxis += 1; break;
-            case WEST: if(xAxis > 0) xAxis -= 1; break;
+            case NORTH:
+                yAxis += 1;
+                break;
+            case SOUTH:
+                if (yAxis > 0) yAxis -= 1;
+                break;
+            case EAST:
+                xAxis += 1;
+                break;
+            case WEST:
+                if (xAxis > 0) xAxis -= 1;
+                break;
             default:
                 throw new IllegalArgumentException("Invalid move command");
         }

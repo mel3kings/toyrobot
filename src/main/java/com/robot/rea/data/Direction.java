@@ -9,7 +9,7 @@ public enum Direction {
             case WEST: return SOUTH;
             case SOUTH: return EAST;
             case EAST: return NORTH;
-            default: throw new IllegalArgumentException("Invalid Direction");
+            default: throw new IllegalArgumentException("Invalid Turn Left Direction");
         }
     }
 
@@ -19,7 +19,7 @@ public enum Direction {
             case WEST: return NORTH;
             case SOUTH: return WEST;
             case EAST: return SOUTH;
-            default:  throw new IllegalArgumentException("Invalid Direction");
+            default:  throw new IllegalArgumentException("Invalid Turn Right Direction");
         }
     }
 }
