@@ -18,7 +18,10 @@ public class BoardController {
     }
 
     public Robot executeCommands(List<String> commands) {
-        Robot dummy = new Robot();
+        Robot robot = new Robot();
+        if (null == commands) {
+            return robot;
+        }
         for (String strCommand : commands) {
             if (strCommand == null) {
                 continue;
@@ -36,10 +39,10 @@ public class BoardController {
                 command = new ReportCommand();
             }
             if (null != command) {
-                command.execute(dummy);
+                command.execute(robot);
             }
         }
-        return dummy;
+        return robot;
     }
 }
 
