@@ -1,7 +1,6 @@
-package com.robot.rea;
+package com.robot.rea.controller;
 
 import com.robot.rea.data.Robot;
-import com.robot.rea.controller.BoardController;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,6 +22,7 @@ public class BoardControllerTest {
     @Test
     public void testInitializeBoard() {
         commands.add("PLACE 0,0,NORTH");
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("0,0,NORTH", r.getLocation());
     }
@@ -31,6 +31,7 @@ public class BoardControllerTest {
     public void testSimpleCommandShouldMoveOneStep() {
         commands.add("PLACE 0,0,NORTH");
         commands.add("MOVE");
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("0,1,NORTH", r.getLocation());
     }
@@ -45,9 +46,25 @@ public class BoardControllerTest {
         commands.add("MOVE");
         commands.add("MOVE");
         commands.add("MOVE");
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
-        assertEquals("0,2,NORTH", r.getLocation());
+        assertEquals("0,5,NORTH", r.getLocation());
+    }
 
+    @Test
+    public void testExceedRightBoardShouldDisregard() {
+        commands.add("PLACE 0,0,NORTH");
+        commands.add("RIGHT");
+        commands.add("MOVE");
+        commands.add("MOVE");
+        commands.add("MOVE");
+        commands.add("MOVE");
+        commands.add("MOVE");
+        commands.add("MOVE");
+        commands.add("MOVE");
+        commands.add("REPORT");
+        Robot r = br.executeCommands(commands);
+        assertEquals("5,0,EAST", r.getLocation());
     }
 
     @Test
@@ -56,6 +73,7 @@ public class BoardControllerTest {
         commands.add("MOVE");
         commands.add("RIGHT");
         commands.add("MOVE");
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("1,1,EAST", r.getLocation());
     }
@@ -66,6 +84,7 @@ public class BoardControllerTest {
         commands.add("MOVE");
         commands.add("LEFT");
         commands.add("MOVE");
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("0,1,WEST", r.getLocation());
     }
@@ -74,6 +93,7 @@ public class BoardControllerTest {
     public void testNoMovement() {
         commands.add("PLACE 0,0,NORTH");
         commands.add("LEFT");
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("0,0,WEST", r.getLocation());
     }
@@ -85,8 +105,21 @@ public class BoardControllerTest {
         commands.add("MOVE");
         commands.add("LEFT");
         commands.add("MOVE");
-
+        commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("3,3,NORTH", r.getLocation());
+    }
+
+    @Test
+    public void testInvalidCommands() {
+        commands.add("PLACE 1,2,EAST");
+        commands.add("BLAH");
+        commands.add("ADADADAS");
+        commands.add("");
+        commands.add(null);
+        commands.add("MOVE");
+        commands.add("REPORT");
+        Robot r = br.executeCommands(commands);
+        assertEquals("2,2,EAST", r.getLocation());
     }
 }

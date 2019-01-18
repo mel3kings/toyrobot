@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 public class PlaceCommand implements Command {
 
     private static final Pattern PLACE_REGEX = Pattern.compile("PLACE (\\d+),(\\d+),(\\w+)");
-
     private int xCoordinates;
     private int yCoordinates;
     private Direction direction;
@@ -43,14 +42,18 @@ public class PlaceCommand implements Command {
         }
     }
 
-    private String[] parseCommand(String command){
+    private String[] parseCommand(String command) {
         Matcher matcher = PLACE_REGEX.matcher(command);
         String[] result = new String[3];
         if (matcher.matches()) {
-            result[0]= matcher.group(1);
-            result[1]= matcher.group(2);
+            result[0] = matcher.group(1);
+            result[1] = matcher.group(2);
             result[2] = matcher.group(3);
         }
         return result;
+    }
+
+    public boolean isValid() {
+        return valid;
     }
 }

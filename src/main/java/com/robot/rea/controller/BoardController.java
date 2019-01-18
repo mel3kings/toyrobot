@@ -19,9 +19,10 @@ public class BoardController {
 
     public Robot executeCommands(List<String> commands) {
         Robot dummy = new Robot();
-
-
         for (String strCommand : commands) {
+            if (strCommand == null) {
+                continue;
+            }
             Command command = null;
             if (strCommand.contains(Robot.Instruction.PLACE.toString())) {
                 command = new PlaceCommand(strCommand);
@@ -31,14 +32,15 @@ public class BoardController {
                 command = new LeftCommand();
             } else if (strCommand.equals(Instruction.RIGHT.toString())) {
                 command = new RightCommand();
+            } else if (strCommand.equals(Instruction.REPORT.toString())) {
+                command = new ReportCommand();
             }
-            if (null != command){
+            if (null != command) {
                 command.execute(dummy);
             }
         }
         return dummy;
     }
-
-
-
 }
+
+

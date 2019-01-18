@@ -46,7 +46,6 @@ public class Robot {
     }
 
     public void move() {
-        System.out.println("moving from " + direction + " current axis is :" + xAxis + "," + yAxis);
         switch (direction) {
             case NORTH:
                 yAxis += 1;
@@ -63,7 +62,6 @@ public class Robot {
             default:
                 throw new IllegalArgumentException("Invalid move command");
         }
-        System.out.println("after moving " + direction + " current axis is :" + xAxis + "," + yAxis);
     }
 
     public Direction getDirection() {

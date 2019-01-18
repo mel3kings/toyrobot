@@ -4,5 +4,5 @@ import com.robot.rea.data.Robot;
 
 public interface Command {
 
-    public void execute(Robot robot);
+    void execute(Robot robot);
 }
