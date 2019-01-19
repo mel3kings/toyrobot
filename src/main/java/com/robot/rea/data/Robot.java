@@ -1,28 +1,14 @@
 package com.robot.rea.data;
 
 public class Robot {
+
     private int xAxis;
     private int yAxis;
     private Direction direction;
-
     private boolean isInitialised = false;
-
-    public boolean isInitialised() {
-        return isInitialised;
-    }
-
-    public void setInitialised(boolean initialised) {
-        isInitialised = initialised;
-    }
-
 
     public enum Instruction {
         PLACE, MOVE, LEFT, RIGHT, REPORT
-    }
-
-
-    public Robot() {
-
     }
 
     public void reportLocation() {
@@ -34,15 +20,11 @@ public class Robot {
     }
 
     public void turnLeft() {
-        if (isInitialised) {
-            direction = direction.turnLeft();
-        }
+        direction = direction.turnLeft();
     }
 
     public void turnRight() {
-        if (isInitialised) {
-            direction = direction.turnRight();
-        }
+        direction = direction.turnRight();
     }
 
     public void move() {
@@ -88,4 +70,11 @@ public class Robot {
         this.yAxis = yAxis;
     }
 
+    public boolean isInitialised() {
+        return isInitialised;
+    }
+
+    public void setInitialised(boolean initialised) {
+        isInitialised = initialised;
+    }
 }

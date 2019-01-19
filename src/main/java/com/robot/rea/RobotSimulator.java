@@ -8,10 +8,11 @@ import java.util.List;
 
 public class RobotSimulator {
 
+
     public static void main(String[] args) {
-        InputReader input = new ConsoleReader();
         BoardController board = new BoardController(5, 5);
-        List<String> commands = input.getCommandsFromUser("/INPUT1.txt");
+        InputReader input = new ConsoleReader();
+        List<String> commands = input.getCommandsFromUser("");
         board.executeCommands(commands);
     }
 }
