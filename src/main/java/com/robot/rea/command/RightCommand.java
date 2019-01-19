@@ -2,6 +2,9 @@ package com.robot.rea.command;
 
 import com.robot.rea.data.Robot;
 
+/**
+ * Turn robot left
+ */
 public class RightCommand implements Command {
 
     @Override

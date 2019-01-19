@@ -7,6 +7,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Take int file path to read file containing instructions
+ */
 public class FileInputReader implements InputReader {
     @Override
     public List<String> getCommandsFromUser(String str) {

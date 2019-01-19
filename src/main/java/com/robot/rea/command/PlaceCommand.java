@@ -6,6 +6,9 @@ import com.robot.rea.data.Robot;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Placing the robot in the board, given coordinates
+ */
 public class PlaceCommand implements Command {
 
     private static final Pattern PLACE_REGEX = Pattern.compile("PLACE (\\d+),(\\d+),(\\w+)");

@@ -8,6 +8,9 @@ import java.util.List;
 import static com.robot.rea.data.Robot.Instruction;
 
 
+/**
+ * Controller for executing list of commands
+ */
 public class BoardController {
     private int MAX_X_AXIS;
     private int MAX_Y_AXIS;

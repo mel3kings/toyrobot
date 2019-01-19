@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+/**
+ * Console reader for processing commands
+ */
 public class ConsoleReader implements InputReader{
 
   @Override
@@ -19,7 +22,7 @@ public class ConsoleReader implements InputReader{
             "    LEFT\n" +
             "    RIGHT\n" +
             "    REPORT");
-    System.out.println("To run: 'CMD + D' (Mac) or 'CTRL + D' (Unix) or 'CTRL + Z' + 'Return' (Windows).");
+    System.out.println("To run: 'CTRL + D' (Mac/Unix) or 'CTRL + Z' + 'Return' (Windows).");
     System.out.println();
     while (scanner.hasNext()) {
       result.add(scanner.nextLine());

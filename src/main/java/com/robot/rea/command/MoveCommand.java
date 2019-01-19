@@ -2,6 +2,10 @@ package com.robot.rea.command;
 
 import com.robot.rea.data.Robot;
 
+/**
+ * Move robot whichever it is facing iff the robot is initialised
+ * we are taking in params as the max x and y axis, so the robot does not fall off
+ */
 public class MoveCommand implements Command {
 
     private int MAX_X_AXIS;
