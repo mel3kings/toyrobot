@@ -14,7 +14,6 @@ public class MoveCommand implements Command {
     public MoveCommand(int x, int y) {
         this.MAX_X_AXIS = x;
         this.MAX_Y_AXIS = y;
-
     }
 
     @Override

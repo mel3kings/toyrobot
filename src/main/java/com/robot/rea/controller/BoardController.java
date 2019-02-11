@@ -30,7 +30,9 @@ public class BoardController {
                 continue;
             }
             Command command = null;
-            if (strCommand.contains(Robot.Instruction.PLACE.toString())) {
+            if(strCommand.equals(Instruction.PLACE_OBJECT.toString())){
+                command = new PlaceObjectCommand();
+            }else if (strCommand.contains(Robot.Instruction.PLACE.toString())) {
                 command = new PlaceCommand(strCommand);
             } else if (strCommand.equals(Instruction.MOVE.toString())) {
                 command = new MoveCommand(this.MAX_X_AXIS, this.MAX_Y_AXIS);

@@ -16,7 +16,6 @@ public class BoardControllerTest {
     public void init() {
         br = new BoardController(5, 5);
         commands = new ArrayList<>();
-
     }
 
     @Test
@@ -121,5 +120,15 @@ public class BoardControllerTest {
         commands.add("REPORT");
         Robot r = br.executeCommands(commands);
         assertEquals("2,2,EAST", r.getLocation());
+    }
+
+    @Test
+    public void testNewPlaceObjectCommand() {
+        commands.add("PLACE 0,0,EAST");
+        commands.add("PLACE_OBJECT");
+        commands.add("MOVE");
+        commands.add("REPORT");
+        Robot r = br.executeCommands(commands);
+        assertEquals("0,0,EAST", r.getLocation());
     }
 }
